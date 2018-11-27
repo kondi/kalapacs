@@ -19,6 +19,8 @@ const createWindow = async () => {
     height: 600,
   });
 
+  mainWindow.setMenu(null);
+
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/index.html`);
 
@@ -57,6 +59,11 @@ app.on('activate', () => {
   if (mainWindow === null) {
     createWindow();
   }
+});
+
+// Quit when all windows are closed.
+app.on('window-all-closed', () => {
+  app.quit();
 });
 
 // In this file you can include the rest of your app's specific main process
